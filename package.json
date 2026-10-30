@@ -1,0 +1,24 @@
+{
+  "name": "ridelink",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "workspaces": [
+    "apps/web",
+    "apps/signaling"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @ridelink/web",
+    "dev:signaling": "npm run dev --workspace @ridelink/signaling",
+    "start:signaling": "npm run start --workspace @ridelink/signaling",
+    "build": "npm run build --workspace @ridelink/web",
+    "lint": "npm run lint --workspace @ridelink/web && npm run lint --workspace @ridelink/signaling",
+    "test": "npm run test --workspace @ridelink/signaling && node --test tests/navigation.test.js tests/audio-ducking.test.js",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "playwright": "^1.64.1"
+  }
+}
